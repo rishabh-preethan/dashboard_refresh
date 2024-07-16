@@ -1,0 +1,2 @@
+echo `date` >> py_out
+python3 ./base_query_refresh.py

@@ -1,0 +1,2 @@
+echo `date` >> /home/rishabhp/sandbox/Final_Customer_Dashboard/py_out
+python3 /home/rishabhp/sandbox/Final_Customer_Dashboard/test_cronjob.py
