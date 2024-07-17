@@ -5,12 +5,20 @@ import time
 from datetime import datetime
 from refresh_logic import refresh_all_widgets
 import configparser
+import logging
 
 # Load constants from the properties file
 config = configparser.ConfigParser()
 config.read('constants.properties')
 
 TIME_REFRESH_SCHEDULE = config.get('DEFAULT', 'TIME_REFRESH_SCHEDULE')
+
+logging.basicConfig(
+    filename='app.log',  # Path to the log file
+    filemode='a',  # Append mode
+    format='%(asctime)s - %(levelname)s - %(message)s',  # Log format
+    level=logging.INFO  # Log level
+)
 
 def get_local_time():
     """
@@ -30,12 +38,14 @@ def schedule_refresh(time_refresh_schedule):
 
     This function uses the `schedule` module to run `refresh_all_widgets` at the specified time.
     """
-    print(f"Scheduling refresh at {time_refresh_schedule} local time")
+    # print(f"Scheduling refresh at {time_refresh_schedule} local time")
+    logging.info(f"Scheduling refresh at {time_refresh_schedule} local time")
 
     schedule.every().day.at(time_refresh_schedule).do(refresh_all_widgets)
 
     # Print statement indicating scheduler has started
-    print(f"Scheduler started. Waiting for scheduled refresh at {time_refresh_schedule} local time...")
+    # print(f"Scheduler started. Waiting for scheduled refresh at {time_refresh_schedule} local time...")
+    logging.info(f"Scheduler started. Waiting for scheduled refresh at {time_refresh_schedule} local time...")
 
     while True:
         current_time = get_local_time()
