@@ -40,7 +40,7 @@ def send_email(total_time):
         # Compose and send the email
         from_address = 'rishabhp5902@gmail.com'
         subject = 'Refresh Completed for Final Dashboard'
-        body = 'Refresh for Final Dashboard V2 is completed and took: '
+        body = 'Refresh for Final Dashboard V2 has been completed'
 
         for to_address in to_addresses:
             message = f'Subject: {subject}\n\n{body}'
